@@ -1,28 +1,40 @@
 package com.example.gamerooms.service;
 
-import com.example.gamerooms.dao.impl.ReservationRepository;
+import com.example.gamerooms.business.Utilisateur;
+import com.example.gamerooms.business.Room;
+import com.example.gamerooms.dao.ReservationRepository;
 import com.example.gamerooms.business.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Service
 public class ReservationService {
 
-    private final ReservationRepository reservationRepository;
+    private ReservationRepository reservationRepository;
 
     @Autowired
     public ReservationService(ReservationRepository reservationRepository) {
         this.reservationRepository = reservationRepository;
     }
 
-    public Reservation createReservation(Reservation reservation) {
-        // Ajouter la logique de validation ici
+    public ReservationService(){
+
+    }
+
+    public Reservation createReservation(Utilisateur utilisateur, Room room, LocalDateTime startTime, LocalDateTime endTime) {
+        // Ajouter la logique de validation ici si nécessaire
+        Reservation reservation = new Reservation();
+        reservation.setUtilisateur(utilisateur);
+        reservation.setRoom(room);
+        reservation.setStartTime(startTime);
+        reservation.setEndTime(endTime);
         return reservationRepository.save(reservation);
     }
 
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
     }
-
-    // Ajoutez d'autres méthodes de service pour récupérer, mettre à jour et supprimer des réservations
 }

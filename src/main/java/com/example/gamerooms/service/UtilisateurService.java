@@ -7,12 +7,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UtilisateurService {
-
-    private final UtilisateurRepository utilisateurRepository;
-
+    private UtilisateurRepository utilisateurRepository;
     @Autowired
     public UtilisateurService(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
+    }
+
+    public UtilisateurService(){
+
     }
 
     public Utilisateur ajouterUtilisateur(String nom, String prenom, String email) {

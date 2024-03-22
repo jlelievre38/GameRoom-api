@@ -23,7 +23,7 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-    // Méthodes pour obtenir les valeurs des attributs
+
     public String getNom() {
         return this.nom;
     }

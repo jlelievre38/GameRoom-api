@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Room {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,12 +18,17 @@ public class Room {
     public Room() {
     }
 
-    public Room(boolean status) {
+    public Room(Long id, boolean status) {
+        this.id = id;
         this.status = status;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public boolean isStatus() {
